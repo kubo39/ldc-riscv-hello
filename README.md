@@ -10,11 +10,7 @@ $ curl -L https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.1.0-
 2. Get LDC with patch and build.
 
 ```console
-$ git clone -b m64 https://github.com/kinke/ldc
-$ cd ldc2
-$ git submodule init
-$ git submodule update --recursive
-$ cd ..
+% git clone --recurse-submodules -b m64 --depth=1 https://github.com/kinke/ldc
 $ mkdir build-ldc && cd $_
 $ cmake -G Ninja ../ldc \
   -DCMAKE_BUILD_TYPE=Release \

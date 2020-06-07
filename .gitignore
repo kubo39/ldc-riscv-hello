@@ -1,3 +1,4 @@
 gcc/
+ldc/
 *.o
 hello
