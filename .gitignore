@@ -1,4 +1,5 @@
 gcc/
+build-ldc/
 ldc/
 *.o
 hello
