@@ -1,10 +1,17 @@
 .PHONY: all clean
 
-LDC = ~/dev-ldc/build-ldc/bin/ldc2
-DFLAGS = --mtriple=riscv64-unknown-none-elf -mattr=+m,+a,+c -mcpu=generic-rv64 --gcc=./gcc/bin/riscv64-unknown-elf-gcc -Xcc=-march=rv64imac -Xcc=-mabi=lp64 -g -betterC
+CC = $(PWD)/gcc/bin/riscv64-unknown-elf-gcc
+LDC = ldc2
+
+DFLAGS = --mtriple=riscv64-unknown-none-elf -mattr=+m,+a,+c -mcpu=generic-rv64 -betterC -c
+CFLAGS = -march=rv64imac -mabi=lp64
+
+OBJ = hello.o
+TARGET = hello
 
 all:
-	$(LDC) $(DFLAGS) hello.d
+	$(LDC) $(DFLAGS) -of=$(OBJ) hello.d
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJ)
 
 clean:
 	$(RM) *.o hello
